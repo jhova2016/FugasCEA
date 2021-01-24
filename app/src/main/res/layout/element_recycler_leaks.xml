@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+
+    app:cardCornerRadius="16dp"
+    android:layout_margin="6dp"
+    app:cardBackgroundColor="@color/Hint"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        >
+
+        <LinearLayout
+            android:layout_width="100dp"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:background="@color/Col3"
+            android:gravity="center"
+            >
+            <TextView
+                android:id="@+id/Status"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Estatus"
+                android:textColor="@color/AuxWhite"
+                android:textSize="12sp"
+
+
+                />
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+
+            >
+
+
+
+
+            <LinearLayout
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/Hint"
+                android:orientation="vertical"
+                android:layout_margin="8dp"
+
+                >
+
+                <TextView
+                    android:id="@+id/Location"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Location"
+                    android:textColor="@color/AuxBlack"
+                    android:gravity="left"
+                    android:textSize="16sp"
+
+                    android:layout_marginRight="16dp"
+
+                    />
+                <TextView
+                    android:id="@+id/ReportDate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Fecha de reporte"
+                    android:textColor="@color/AuxBlack"
+                    android:gravity="left"
+                    android:textSize="16sp"
+                    android:layout_weight="1"
+                    android:layout_marginRight="16dp"
+
+                    />
+
+
+                <TextView
+                    android:id="@+id/WhoReported"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Quien reporto"
+                    android:textColor="@color/Col5"
+                    android:gravity="left"
+                    android:textSize="12sp"
+                    android:layout_weight="1"
+                    android:layout_marginRight="16dp"
+
+                    />
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:weightSum="2"
+                    >
+                    <TextView
+                        android:id="@+id/Origin"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Origen"
+                        android:textColor="@color/Col5"
+                        android:gravity="left"
+                        android:textSize="12sp"
+                        android:layout_weight="1"
+
+                        android:layout_marginRight="16dp"
+
+                        />
+
+
+
+                </LinearLayout>
+
+
+
+
+
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+
+</androidx.cardview.widget.CardView>
