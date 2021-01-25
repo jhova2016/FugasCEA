@@ -29,7 +29,17 @@
                 android:id="@+id/Status"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Estatus"
+                android:text="@string/estatus"
+                android:textColor="@color/AuxWhite"
+                android:textSize="12sp"
+
+
+                />
+            <TextView
+                android:id="@+id/Responsible"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/responsable"
                 android:textColor="@color/AuxWhite"
                 android:textSize="12sp"
 
@@ -63,40 +73,52 @@
                     android:id="@+id/Location"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Location"
+                    android:text="@string/location"
                     android:textColor="@color/AuxBlack"
                     android:gravity="left"
                     android:textSize="16sp"
 
-                    android:layout_marginRight="16dp"
+                    android:layout_marginEnd="16dp"
 
-                    />
+                    tools:ignore="RtlHardcoded" />
+                <TextView
+                    android:id="@+id/References"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/referencias"
+                    android:textColor="@color/AuxBlack"
+                    android:gravity="left"
+                    android:textSize="16sp"
+
+                    android:layout_marginEnd="16dp"
+
+                    tools:ignore="RtlHardcoded" />
                 <TextView
                     android:id="@+id/ReportDate"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Fecha de reporte"
+                    android:text="@string/fecha_de_reporte"
                     android:textColor="@color/AuxBlack"
                     android:gravity="left"
                     android:textSize="16sp"
                     android:layout_weight="1"
                     android:layout_marginRight="16dp"
 
-                    />
+                    tools:ignore="RtlHardcoded" />
 
 
                 <TextView
                     android:id="@+id/WhoReported"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Quien reporto"
+                    android:text="@string/quien_reporto"
                     android:textColor="@color/Col5"
                     android:gravity="left"
                     android:textSize="12sp"
                     android:layout_weight="1"
                     android:layout_marginRight="16dp"
 
-                    />
+                    tools:ignore="RtlHardcoded" />
 
 
                 <LinearLayout
@@ -107,17 +129,17 @@
                     >
                     <TextView
                         android:id="@+id/Origin"
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:text="Origen"
+                        android:text="@string/origen"
                         android:textColor="@color/Col5"
                         android:gravity="left"
                         android:textSize="12sp"
                         android:layout_weight="1"
 
-                        android:layout_marginRight="16dp"
+                        android:layout_marginEnd="16dp"
 
-                        />
+                        tools:ignore="RtlHardcoded" />
 
 
 

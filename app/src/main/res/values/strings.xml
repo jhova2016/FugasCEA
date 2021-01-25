@@ -2,4 +2,19 @@
     <string name="app_name">Fugas CEA</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="estatus">Estatus</string>
+    <string name="responsable">Responsable</string>
+    <string name="location">Location</string>
+    <string name="referencias">Referencias</string>
+    <string name="fecha_de_reporte">Fecha de reporte</string>
+    <string name="quien_reporto">Quien reporto</string>
+    <string name="origen">Origen</string>
+    <string name="nuevo">Nuevo</string>
+    <string name="lugar">Lugar</string>
+    <string name="quien_reporta">Quien reporta</string>
+    <string name="importancia">Importancia</string>
+    <string name="status">Status</string>
+    <string name="cancelar">Cancelar</string>
+    <string name="guardar">Guardar</string>
+    <string name="elementspinner">ElementSpinner</string>
 </resources>

@@ -39,10 +39,12 @@ public void onBindViewHolder(@NonNull Adapter_Recycler_Leaks.ViewHolderDatos hol
 
         holder.Id=(ListDatos.get(position).getId());
         holder.Locate.setText(ListDatos.get(position).getLocate());
+        holder.References.setText(ListDatos.get(position).getReferences());
         holder.ReportDate.setText(ListDatos.get(position).getReportDate());
         holder.WhoReported.setText(ListDatos.get(position).getWhoReported());
         holder.Origin.setText(ListDatos.get(position).getOrigin());
         holder.Status.setText(ListDatos.get(position).getStatus());
+        holder.Responsible.setText(ListDatos.get(position).getResponsible());
 
 
 
@@ -72,20 +74,24 @@ public class ViewHolderDatos extends RecyclerView.ViewHolder {
 
     String Id;
     TextView Locate;
+    TextView References;
     TextView ReportDate;
     TextView WhoReported;
     TextView Origin;
     TextView Status;
+    TextView Responsible;
 
 
 
     public ViewHolderDatos(@NonNull View itemView) {
         super(itemView);
         Locate=itemView.findViewById(R.id.Location);
+        References=itemView.findViewById(R.id.References);
         ReportDate=itemView.findViewById(R.id.ReportDate);
         WhoReported=itemView.findViewById(R.id.WhoReported);
         Origin=itemView.findViewById(R.id.Origin);
         Status=itemView.findViewById(R.id.Status);
+        Responsible=itemView.findViewById(R.id.Responsible);
 
 
 

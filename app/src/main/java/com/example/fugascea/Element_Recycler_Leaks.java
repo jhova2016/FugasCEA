@@ -4,20 +4,40 @@ public class Element_Recycler_Leaks {
 
     String Id;
     String Locate;
+    String References;
     String ReportDate;
     String WhoReported;
     String Origin;
     String Importance;
     String Status;
+    String responsible;
 
-    public Element_Recycler_Leaks(String id, String locate, String reportDate, String whoReported, String origin, String importance, String status) {
+    public Element_Recycler_Leaks(String id, String locate, String references, String reportDate, String whoReported, String origin, String importance, String status, String responsible) {
         Id = id;
         Locate = locate;
+        References = references;
         ReportDate = reportDate;
         WhoReported = whoReported;
         Origin = origin;
         Importance = importance;
         Status = status;
+        this.responsible = responsible;
+    }
+
+    public String getReferences() {
+        return References;
+    }
+
+    public void setReferences(String references) {
+        References = references;
+    }
+
+    public String getResponsible() {
+        return responsible;
+    }
+
+    public void setResponsible(String responsible) {
+        this.responsible = responsible;
     }
 
     public String getImportance() {
