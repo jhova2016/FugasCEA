@@ -51,17 +51,17 @@ import static android.content.ContentValues.TAG;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link Fragment_Leaks#newInstance} factory method to
+ * Use the {@link Fragment_Conclueded#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class Fragment_Leaks extends Fragment {
+public class Fragment_Conclueded extends Fragment {
 
 
-    RecyclerView RecyclerView;
-    Adapter_Recycler_Leaks AdapterElementRecycler;
+    androidx.recyclerview.widget.RecyclerView RecyclerView;
+    Adapter_Recycler_Leaks_Aux AdapterElementRecycler;
     final ArrayList<Element_Recycler_Leaks> ElementsRecycler = new ArrayList<>();
 
-    FloatingActionButton FloatingButton;
+
 
     AlertDialog DialogNewLeaks;
     AlertDialog DialogEditLeaks;
@@ -77,7 +77,7 @@ public class Fragment_Leaks extends Fragment {
 
 
 
-    public Fragment_Leaks() {
+    public Fragment_Conclueded() {
         // Required empty public constructor
     }
 
@@ -107,8 +107,7 @@ public class Fragment_Leaks extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment__leaks, container, false);
-        FloatingButton=view.findViewById(R.id.floatingActionButton);
+        View view = inflater.inflate(R.layout.fragment__conclueded, container, false);
 
         RecyclerView = view.findViewById(R.id.RecyclerView);
         RecyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
@@ -118,7 +117,7 @@ public class Fragment_Leaks extends Fragment {
                 .get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-              //  Toast.makeText(getContext(),task.getResult().get("Aceptado").toString(),Toast.LENGTH_LONG).show();
+                //  Toast.makeText(getContext(),task.getResult().get("Aceptado").toString(),Toast.LENGTH_LONG).show();
 
                 if(task.getResult().get("Aceptado").toString().equals("true"))
                 {
@@ -127,7 +126,6 @@ public class Fragment_Leaks extends Fragment {
                 }
                 if(task.getResult().get("Admin").toString().equals("false"))
                 {
-                    FloatingButton.hide();
 
                 }
 
@@ -135,167 +133,9 @@ public class Fragment_Leaks extends Fragment {
             }
         });
 
-
-
-
-        FloatingButton.setOnClickListener(v -> {
-
-            DialogNewLeak();
-            DialogNewLeaks.show();
-
-        });
-
         return view;
     }
 
-
-
-    private void DialogNewLeak()
-    {
-        android.app.AlertDialog.Builder builder=new android.app.AlertDialog.Builder(getContext()).setCancelable(false);
-        LayoutInflater inflater = getLayoutInflater();
-        View view = inflater.inflate(R.layout.dialog_new_leak,null);
-
-        Spinner SpinnerImportance;
-        Spinner SpinnerStatus;
-        Spinner SpinnerOrigin;
-
-        EditText Locate         =view.findViewById(R.id.EditLocate);
-        EditText References     =view.findViewById(R.id.EditReferences);
-        EditText WhoReported    =view.findViewById(R.id.EditWhoReported);
-        //importance
-        //Origin
-        //Status
-        EditText Responsible    =view.findViewById(R.id.EditResponsible);
-        String Date;
-
-        ArrayList<String> listSpinnerImportance = new ArrayList<>();
-        ArrayList<String> listSpinnerStatus = new ArrayList<>();
-        ArrayList<String> listSpinnerOrigin = new ArrayList<>();
-
-        ArrayAdapter<String> AdapterImportance = new ArrayAdapter<>(getContext(), R.layout.controlspinner, listSpinnerImportance);
-        SpinnerImportance=view.findViewById(R.id.SpinnerImportance);
-        listSpinnerImportance.add("Normal");
-        listSpinnerImportance.add("Urgente");
-        AdapterImportance.notifyDataSetChanged();
-        SpinnerImportance.setAdapter(AdapterImportance);
-
-        ArrayAdapter<String> AdapterStatus = new ArrayAdapter<>(getContext(), R.layout.controlspinner, listSpinnerStatus);
-        SpinnerStatus=view.findViewById(R.id.SpinnerStatus);
-        listSpinnerStatus.add("Pendiente");
-        listSpinnerStatus.add("Reparando");
-        listSpinnerStatus.add("Concluido");
-        AdapterStatus.notifyDataSetChanged();
-        SpinnerStatus.setAdapter(AdapterStatus);
-
-        ArrayAdapter<String> AdapterOrigin = new ArrayAdapter<>(getContext(), R.layout.controlspinner, listSpinnerOrigin);
-        SpinnerOrigin=view.findViewById(R.id.SpinnerOrigin);
-        listSpinnerOrigin.add("Linea conducción");
-        listSpinnerOrigin.add("Toma de usuario");
-        AdapterOrigin.notifyDataSetChanged();
-        SpinnerOrigin.setAdapter(AdapterOrigin);
-
-
-
-
-        SpinnerImportance.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                Importance=listSpinnerImportance.get(position);
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
-            }
-
-
-        });
-
-        SpinnerStatus.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                Status=listSpinnerStatus.get(position);
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
-            }
-
-
-        });
-
-        SpinnerOrigin.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                Origin=listSpinnerOrigin.get(position);
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
-            }
-
-
-        });
-
-
-
-
-        Calendar Calendario= Calendar.getInstance();
-        int Mes=Calendario.get(Calendar.MONTH);
-        Mes=Mes+1;
-        Date=Calendario.get(Calendar.DAY_OF_MONTH)+"/"+Mes+"/"+Calendario.get(Calendar.YEAR);
-
-        Button BtnSave=view.findViewById(R.id.BtnSave);
-
-        Button BtnCancel=view.findViewById(R.id.BtnCancel);
-
-
-        String finalDate = Date;
-        BtnSave.setOnClickListener(v -> {
-
-
-            Map<String, Object> Leak = new HashMap<>();
-            Leak.put("Locate", Locate.getText().toString());
-            Leak.put("References", References.getText().toString());
-            Leak.put("ReportDate", finalDate);
-            Leak.put("WhoReported", WhoReported.getText().toString());
-            Leak.put("Importance", Importance);
-            Leak.put("Origin", Origin);
-            Leak.put("Status", Status);
-            Leak.put("Responsible", Responsible.getText().toString());
-
-
-
-            db.collection("Leaks")
-                    .add(Leak)
-                    .addOnSuccessListener(documentReference -> {
-                        Toast.makeText(getContext(),"Se agrego correctamente",Toast.LENGTH_LONG).show();
-
-                        SimpleDateFormat objSDFQuitar  = new SimpleDateFormat("HH:mm:ss");
-                        Date date = new Date();
-
-                        DocumentReference washingtonRef = db.collection("Updates").document("UpdateLeaks");
-
-                        washingtonRef.update("Date",  objSDFQuitar .format(date));
-
-                    })
-                    .addOnFailureListener(e -> Toast.makeText(getContext(),"Error al agregar",Toast.LENGTH_LONG).show());
-
-
-
-        });
-
-        BtnCancel.setOnClickListener(v -> DialogNewLeaks.dismiss());
-
-
-        builder.setView(view);
-        DialogNewLeaks=builder.create();
-        DialogNewLeaks.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-
-    }
 
 
     private void DialogEditLeak(String id,String locate,String references, String whoreported,String importance, String origin,String status,String responsible)
@@ -585,7 +425,7 @@ public class Fragment_Leaks extends Fragment {
                             for (QueryDocumentSnapshot document : task.getResult()) {
                                 Log.d(TAG, document.getId() + " => " + document.getData());
 
-                                if(!document.get("Status").toString().equals("Concluido"))
+                                if(document.get("Status").toString().equals("Concluido"))
                                 {
                                     ElementsRecycler.add(new Element_Recycler_Leaks(
                                             document.getId(),
@@ -600,8 +440,6 @@ public class Fragment_Leaks extends Fragment {
 
                                     );
                                 }
-
-
 
 
 
@@ -640,7 +478,7 @@ public class Fragment_Leaks extends Fragment {
 
 
 
-                            AdapterElementRecycler = new Adapter_Recycler_Leaks(ElementsRecycler,getContext());
+                            AdapterElementRecycler = new Adapter_Recycler_Leaks_Aux(ElementsRecycler,getContext());
                             AdapterElementRecycler.notifyDataSetChanged();
                             RecyclerView.setAdapter(AdapterElementRecycler);
 
@@ -664,7 +502,7 @@ public class Fragment_Leaks extends Fragment {
                                                         ElementsRecycler.get(RecyclerView.getChildAdapterPosition(v)).getOrigin(),
                                                         ElementsRecycler.get(RecyclerView.getChildAdapterPosition(v)).getStatus(),
                                                         ElementsRecycler.get(RecyclerView.getChildAdapterPosition(v)).getResponsible()
-                                            );
+                                                );
                                                 DialogEditLeaks.show();
 
                                             }
@@ -766,12 +604,5 @@ public class Fragment_Leaks extends Fragment {
         DialogDeletLeaks.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
 
     }
-
-
-
-
-
-
-
 
 }

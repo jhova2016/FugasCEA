@@ -17,4 +17,12 @@
     <string name="cancelar">Cancelar</string>
     <string name="guardar">Guardar</string>
     <string name="elementspinner">ElementSpinner</string>
+    <string name="editar">Editar</string>
+    <string name="informacion">Informacion</string>
+    <string name="aceptar">Aceptar</string>
+
+
+    <string name="tab_text_1">Tab 1</string>
+    <string name="tab_text_2">Tab 2</string>
+
 </resources>
