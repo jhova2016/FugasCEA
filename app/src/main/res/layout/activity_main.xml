@@ -28,16 +28,28 @@
             >
 
             <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="CEA"
+                android:layout_marginLeft="18dp"
+                android:textColor="@color/ColPendiente"
+                android:fontFamily="sans-serif-black"
+                android:textSize="24dp" />
 
+            <TextView
                 android:id="@+id/Titulo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="18dp"
+
                 android:layout_weight="1"
                 android:gravity="left"
-                android:text="Fugas"
+                android:text=":Fugas"
                 android:textColor="@color/AuxWhite"
                 android:textSize="24dp" />
+
+
+
+
 
             <LinearLayout
                 android:layout_width="wrap_content"

@@ -15,7 +15,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:background="@color/Col4"
+        android:background="@color/Col2"
         android:weightSum="9"
         android:fitsSystemWindows="true"
         tools:context=".UI.MainActivity">
@@ -311,7 +311,7 @@
                             android:layout_height="wrap_content"
                             android:maxLines="1"
                             android:inputType="textEmailAddress"
-                            android:background="@color/Col2"
+                            android:background="@color/Col1"
                             android:textSize="14sp"
                             />
                     </com.google.android.material.textfield.TextInputLayout>

@@ -1,6 +1,7 @@
 package com.example.fugascea;
 
 import android.app.AlertDialog;
+import android.app.ProgressDialog;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -20,6 +21,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -56,6 +58,7 @@ import static android.content.ContentValues.TAG;
  */
 public class Fragment_Leaks extends Fragment {
 
+    AlertDialog waitUploadData;
 
     RecyclerView RecyclerView;
     Adapter_Recycler_Leaks AdapterElementRecycler;
@@ -77,6 +80,7 @@ public class Fragment_Leaks extends Fragment {
 
 
 
+    LinearLayout LayoutNada;
     public Fragment_Leaks() {
         // Required empty public constructor
     }
@@ -109,6 +113,9 @@ public class Fragment_Leaks extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment__leaks, container, false);
         FloatingButton=view.findViewById(R.id.floatingActionButton);
+        DialogNewLeak();
+
+        LayoutNada=view.findViewById(R.id.LayoutNada);
 
         RecyclerView = view.findViewById(R.id.RecyclerView);
         RecyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
@@ -140,7 +147,7 @@ public class Fragment_Leaks extends Fragment {
 
         FloatingButton.setOnClickListener(v -> {
 
-            DialogNewLeak();
+
             DialogNewLeaks.show();
 
         });
@@ -284,7 +291,7 @@ public class Fragment_Leaks extends Fragment {
                     })
                     .addOnFailureListener(e -> Toast.makeText(getContext(),"Error al agregar",Toast.LENGTH_LONG).show());
 
-
+            DialogNewLeaks.dismiss();
 
         });
 
@@ -303,6 +310,8 @@ public class Fragment_Leaks extends Fragment {
         android.app.AlertDialog.Builder builder=new android.app.AlertDialog.Builder(getContext()).setCancelable(false);
         LayoutInflater inflater = getLayoutInflater();
         View view = inflater.inflate(R.layout.dialog_edit_leak,null);
+
+        waitUploadData.dismiss();
 
         final ArrayList<String> listSpinner = new ArrayList<>();
         //final ArrayAdapter<String> adapter = new ArrayAdapter<String>(getContext(),R.layout.controlspinner, listSpinner);
@@ -332,7 +341,6 @@ public class Fragment_Leaks extends Fragment {
         switch (Importance) { case"Normal": AuxImportance=0;break; case"Urgente": AuxImportance=1;break; }
         switch (Origin) { case"Linea conduccion": AuxOrigin=0;break; case"toma de usuario": AuxOrigin=1;break; }
         switch (Status) { case"Pendiente": AuxStatus=0;break; case"En reparacion": AuxStatus=1;break; case"Concluido": AuxStatus=2;break; }
-
 
 
         Spinner SpinnerImportance;
@@ -512,6 +520,8 @@ public class Fragment_Leaks extends Fragment {
         LayoutInflater inflater = getLayoutInflater();
         View view = inflater.inflate(R.layout.dialog_info_leak,null);
 
+        waitUploadData.dismiss();
+
         final ArrayList<String> listSpinner = new ArrayList<>();
         //final ArrayAdapter<String> adapter = new ArrayAdapter<String>(getContext(),R.layout.controlspinner, listSpinner);
 
@@ -607,6 +617,16 @@ public class Fragment_Leaks extends Fragment {
 
                             }
 
+                            if(ElementsRecycler.size()!=0)
+                            {
+                                LayoutNada.setVisibility(View.GONE);
+                            }
+                            else
+                            {
+                                LayoutNada.setVisibility(View.VISIBLE);
+                            }
+
+
                             SimpleDateFormat objSDF  = new SimpleDateFormat("dd/MM/yyyy");
                             for(int i = 0; i < ElementsRecycler.size() - 1; i++)
                             {
@@ -648,6 +668,8 @@ public class Fragment_Leaks extends Fragment {
                                 @Override
                                 public void onClick(View v) {
 
+                                    waitUploadData = newProgressDialog("Espere", "... ", false);
+                                    waitUploadData.show();
 
                                     db.collection("Users").document(user.getEmail()).collection("Acceso").document(user.getEmail())
                                             .get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
@@ -768,6 +790,18 @@ public class Fragment_Leaks extends Fragment {
     }
 
 
+    public ProgressDialog newProgressDialog(String Title, String Message, boolean isCancelable){
+        ProgressDialog nPD = new ProgressDialog(getContext());
+        nPD.setTitle(Title); // Setting Title
+        nPD.setMessage(Message); // Setting Message
+        nPD.setProgressStyle(ProgressDialog.STYLE_SPINNER); // Progress Dialog Style Spinner
+        if (isCancelable){
+            nPD.setCancelable(true);
+        } else {
+            nPD.setCancelable(false);
+        }
+        return nPD;
+    }
 
 
 

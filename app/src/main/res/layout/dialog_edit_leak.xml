@@ -24,6 +24,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
+            android:background="@color/Col1"
+            android:layout_marginBottom="8dp"
 
             >
 
@@ -39,7 +41,7 @@
 
                 android:gravity="left"
                 android:textColor="@color/AuxWhite"
-                android:text="Localidad"
+                android:text="Editar"
                 android:textSize="18dp" />
 
             <ImageView
@@ -82,7 +84,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="@string/lugar"
-                        android:textColorHint="@color/Col1"
+                        android:textColorHint="@color/AuxWhite"
                        >
                         <com.google.android.material.textfield.TextInputEditText
                             android:id="@+id/EditLocate"
@@ -91,8 +93,7 @@
                             android:maxLines="1"
                             android:textSize="14sp"
                             android:inputType="text"
-                            android:textColorHighlight="@color/black"
-                            android:background="@color/AuxWhite"
+                            android:background="@color/Col1"
 
                             />
                     </com.google.android.material.textfield.TextInputLayout>
@@ -116,7 +117,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="@string/referencias"
-                        android:textColorHint="@color/Col1"
+                        android:textColorHint="@color/AuxWhite"
                         >
                         <com.google.android.material.textfield.TextInputEditText
                             android:id="@+id/EditReferences"
@@ -124,8 +125,8 @@
                             android:layout_height="wrap_content"
                             android:maxLines="1"
                             android:inputType="textEmailAddress"
-                            android:textColorHighlight="@color/black"
-                            android:background="@color/AuxWhite"
+
+                            android:background="@color/Col1"
                             android:textSize="14sp"
                             />
                     </com.google.android.material.textfield.TextInputLayout>
@@ -153,7 +154,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="@string/quien_reporta"
-                        android:textColorHint="@color/Col1"
+                        android:textColorHint="@color/AuxWhite"
                         >
                         <com.google.android.material.textfield.TextInputEditText
                             android:id="@+id/EditWhoReported"
@@ -161,8 +162,7 @@
                             android:layout_height="wrap_content"
                             android:maxLines="1"
                             android:inputType="textEmailAddress"
-                            android:textColorHighlight="@color/black"
-                            android:background="@color/AuxWhite"
+                            android:background="@color/Col1"
                             android:textSize="14sp"
                             />
                     </com.google.android.material.textfield.TextInputLayout>
@@ -329,7 +329,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="@string/responsable"
-                        android:textColorHint="@color/Col1"
+                        android:textColorHint="@color/AuxWhite"
 
                         >
                         <com.google.android.material.textfield.TextInputEditText
@@ -338,8 +338,8 @@
                             android:layout_height="wrap_content"
                             android:maxLines="1"
                             android:inputType="textEmailAddress"
-                            android:textColorHighlight="@color/black"
-                            android:background="@color/AuxWhite"
+
+                            android:background="@color/Col1"
                             android:textSize="14sp"
                             />
                     </com.google.android.material.textfield.TextInputLayout>

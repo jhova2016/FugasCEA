@@ -1,6 +1,7 @@
 package com.example.fugascea;
 
 import android.app.AlertDialog;
+import android.app.ProgressDialog;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -20,6 +21,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -75,7 +77,9 @@ public class Fragment_Conclueded extends Fragment {
     FirebaseUser user;
     final FirebaseFirestore db = FirebaseFirestore.getInstance();
 
+    AlertDialog waitUploadData;
 
+    LinearLayout LayoutNada;
 
     public Fragment_Conclueded() {
         // Required empty public constructor
@@ -108,7 +112,7 @@ public class Fragment_Conclueded extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment__conclueded, container, false);
-
+        LayoutNada=view.findViewById(R.id.LayoutNada);
         RecyclerView = view.findViewById(R.id.RecyclerView);
         RecyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
 
@@ -143,6 +147,7 @@ public class Fragment_Conclueded extends Fragment {
         android.app.AlertDialog.Builder builder=new android.app.AlertDialog.Builder(getContext()).setCancelable(false);
         LayoutInflater inflater = getLayoutInflater();
         View view = inflater.inflate(R.layout.dialog_edit_leak,null);
+        waitUploadData.dismiss();
 
         final ArrayList<String> listSpinner = new ArrayList<>();
         //final ArrayAdapter<String> adapter = new ArrayAdapter<String>(getContext(),R.layout.controlspinner, listSpinner);
@@ -352,6 +357,8 @@ public class Fragment_Conclueded extends Fragment {
         LayoutInflater inflater = getLayoutInflater();
         View view = inflater.inflate(R.layout.dialog_info_leak,null);
 
+        waitUploadData.dismiss();
+
         final ArrayList<String> listSpinner = new ArrayList<>();
         //final ArrayAdapter<String> adapter = new ArrayAdapter<String>(getContext(),R.layout.controlspinner, listSpinner);
 
@@ -445,6 +452,16 @@ public class Fragment_Conclueded extends Fragment {
 
                             }
 
+                            if(ElementsRecycler.size()!=0)
+                            {
+                                LayoutNada.setVisibility(View.GONE);
+                            }
+                            else
+                            {
+                                LayoutNada.setVisibility(View.VISIBLE);
+                            }
+
+
                             SimpleDateFormat objSDF  = new SimpleDateFormat("dd/MM/yyyy");
                             for(int i = 0; i < ElementsRecycler.size() - 1; i++)
                             {
@@ -487,10 +504,14 @@ public class Fragment_Conclueded extends Fragment {
                                 public void onClick(View v) {
 
 
+                                    waitUploadData = newProgressDialog("Espere", "... ", false);
+                                    waitUploadData.show();
+
                                     db.collection("Users").document(user.getEmail()).collection("Acceso").document(user.getEmail())
                                             .get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
                                         @Override
                                         public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+
 
                                             if(task.getResult().get("Admin").toString().equals("true"))
                                             {
@@ -604,5 +625,19 @@ public class Fragment_Conclueded extends Fragment {
         DialogDeletLeaks.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
 
     }
+
+    public ProgressDialog newProgressDialog(String Title, String Message, boolean isCancelable){
+        ProgressDialog nPD = new ProgressDialog(getContext());
+        nPD.setTitle(Title); // Setting Title
+        nPD.setMessage(Message); // Setting Message
+        nPD.setProgressStyle(ProgressDialog.STYLE_SPINNER); // Progress Dialog Style Spinner
+        if (isCancelable){
+            nPD.setCancelable(true);
+        } else {
+            nPD.setCancelable(false);
+        }
+        return nPD;
+    }
+
 
 }
